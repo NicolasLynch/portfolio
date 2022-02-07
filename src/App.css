@@ -1,3 +1,5 @@
+/* _____Estilo movil:_____ */
+
 *{
 	box-sizing: border-box;
 }
@@ -115,19 +117,11 @@ body{
 	border-radius: 3px;
 	outline: 2px solid var(--red);
 	outline-offset: -2px;
-	transition: 0.4s;
+	transition: 0.4s ease-out;
 	backdrop-filter: blur(8px);							/* Esto da el efecto de desenfoque de fondo */
 }
 
-.view-button:hover {
-	box-shadow: inset 0 0 0.3em var(--red);
-	/* border: 1px solid; */
-	/* border: 2px solid var(--withe); */
-	/* box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2); */
-	outline-color: rgba(255, 255, 255, 0);
-	outline-offset: 15px;
 
-}
 
 .icon-arrow{
 	font-size: 1.2rem;
@@ -215,13 +209,22 @@ body{
 }
 
 .nav-list{
-	height: 100%;
-	width: 80%;
-	margin: 0 auto;
+	
+	/* width: 80%; */
+	/* display: flex; */
+	/* justify-content: space-around; */
+	/* align-items: center; */
+	/* list-style: none; */
+	
+	
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	list-style: none;
+	height: 100%;
+	width: 80%;
+	margin: 0 auto;
+	padding: 0;
+    list-style-type: none;
 }
 
 .nav-list li {
@@ -237,11 +240,10 @@ body{
 	bottom: -19%;
 	left: -2%;
 	transform: scaleX(0);
-	transition: 0.4s ease;
+	transition: 0.3s ease-out;
 	/* border-radius: 5em; */
 }
-
-.nav-list li:hover::before, 
+ 
 .nav-list li.active::before {
 	transform: scaleX(1);
 }
@@ -422,10 +424,16 @@ li.active {
 
 .projects{
 	padding: 0 1.5em;
+	/* background-color: red; */
+	margin-bottom: 7em;
+}
+
+.text{
+	text-align: center;
+	font-size: 1rem;
 }
 
 .description{
-	/* text-align: center; */
 	margin-bottom: 3em;
 }
 
@@ -436,39 +444,54 @@ li.active {
 	margin-bottom: 2em;
 
 	display: flex;
+	align-items: start;
+	flex-direction: column;
 	
-	/* display: flex;
-	justify-content: end; */
+	background-color: var(--grey);
+	margin-bottom: 3em;
 }
 
 .project-image{
-	width: 80%;
+	width: 100%;
 	margin: 0;
 }
 
 .project-info{
-	position: absolute;
-	right: 0;
-	/* left: 0; */
 	display: flex;
 	align-items: start;
 	flex-direction: column;
+	/* position: absolute; */
+	/* right: 0; */
+	/* left: 0; */
+	display: flex;
 	height: 100%;
 	width: 43%;
-	width: 35%;
+	width: 100%;
 	/* border: red dotted 2px; */
-	background-color: rgba(26, 26, 26, 0.7)
-
+	/* background-color: rgba(26, 26, 26, 0.7); */
+	
+	/* background-color: red; */
 }
 
 .project-title{
 	/* background-color: red; */
 	margin: 0;
-	margin-bottom: 1em;
-	font-size: 1.3rem;
+	margin-top: 0.45em;
+	margin-bottom: 0.6em;
+	font-size: 1.5rem;
 	font-weight: 700;
+	width: 100%;
+	text-align: center;
 }
 
+.project-links{
+	display: flex;
+	align-items: start;
+	justify-content: space-evenly;
+	width: 100%;
+	margin-bottom: 0.2em;
+	/* background-color: #ff4d58; */
+}
 
 .link-container{
 	margin-bottom: 0.4em;
@@ -482,11 +505,9 @@ li.active {
 	color: var();
 	transition: 0.4s;
 	cursor: pointer;
+	/* margin-right: 1.5em; */
 }
 
-.link-container:hover{
-	color: var(--black);
-}
 
 .project-link{
 	color: inherit;
@@ -499,46 +520,53 @@ li.active {
 	/* transition: 0.2s; */
 	text-transform: uppercase;
 	font-weight: 700;
+	font-size: 0.8rem;
 }
 
 .link-underline{
 	height: 10%;
+	height: 3px;
 	width: 100%;
 	background-color: var(--red);
 	position: absolute;
 	bottom: 0;
-	transition: 0.2s;
+	transition: 0.2s ease-out;
 	
 	
 	/* height: 100%; */
 }
 
-.link-container:hover .link-underline{
-	height: 100%;
-}
-
 
 .contact{
 	/* background-color: red; */
-	padding: 0 1.5em;
+	/* padding: 0 1.5em; */
+	display: flex;
+	align-items: center;
+	/* justify-content: center; */
+	flex-direction: column;
 }
 
 .contact-container{
 	/* background-color: red; */
 	height: 21em;
+	margin-bottom: 3em;
+	padding: 0 1.5em;
 }
 
 .form{
 	/* background-color: red; */
 	display: flex;
 	align-items: center;
+	/* justify-content: center; */
 	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .contact-input{
 	background-color: var(--grey);
 	border: none;
-	margin-bottom: 0.3em;
+	margin-bottom: 0.4em;
 	outline: none;	
 	color: var(--withe);									/* Quita el bordee en azul que aparace cuando seleccionamos un input */
 	width: 100%;
@@ -556,7 +584,7 @@ li.active {
 .contact-textarea{
 	height: 8em;
 	resize: none;										/* Quita esa opcion anti estetica que tiene el text area que le permite al usauario cambiar su tamaño */					
-	font-size: 1rem;
+	/* font-size: 1rem; */
 	padding-top: 0.4em;
 }
 
@@ -568,9 +596,7 @@ li.active {
 	margin-left: auto;
 }
 
-.contact-button-container:hover{
-	color: var(--black);
-}
+
 
 .contact-button{
 	color: inherit;
@@ -593,13 +619,10 @@ li.active {
 	bottom: 0;
 	width: 100%;
 	height: 10%;
-	transition: 0.2s;
+	transition: 0.2s ease-out;
 	z-index: 100;
 }
 
-.contact-button-container:hover .contact-button-underline{
-	height: 100%;
-}
 
 .message-sent{
 	display: flex;
@@ -608,9 +631,13 @@ li.active {
 	flex-direction: column;
 }
 
-.constact-text{
-	text-align: center;
-	margin-bottom: 2em;
+.contact-text{
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+.contact-text-margin{
+	margin-bottom: 3em;
 }
 
 .menssage-sent-icon{
@@ -621,12 +648,12 @@ li.active {
 
 .contact-links{
 	position: relative;
-	left: -1.5em;
+	/* left: -1.5em; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 8em;
-	width: calc(100% + 3em);
+	width: 100vw;
 	background-color: var(--grey);
 }
 
@@ -638,11 +665,211 @@ li.active {
 	transition: 0.2s;
 }
 
-.contact-icon:hover{
-	color: var(--light-blue);
-	transform: scale(1.2);
-}
+
 
 .active{
 	text-decoration: underline;
+}
+
+
+
+@media (hover: hover){
+	.view-button:hover {
+		box-shadow: inset 0 0 0.3em var(--red);
+		/* border: 1px solid; */
+		/* border: 2px solid var(--withe); */
+		/* box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2); */
+		outline-color: transparent;
+		outline-offset: 15px;
+	}
+
+	.nav-list li:hover::before{
+		transform: scaleX(1);
+	}
+
+	.link-container:hover{
+		color: var(--black);
+	}
+
+	.link-container:hover .link-underline{
+		height: 100%;
+	}
+
+	.contact-button-container:hover{
+		color: var(--black);
+	}
+
+	.contact-button-container:hover .contact-button-underline{
+		height: 100%;
+	}
+
+	.contact-icon:hover{
+		color: var(--light-blue);
+		transform: scale(1.2);
+	}
+}
+
+
+
+
+/* _____Estilo de Tablet:_____ */
+@media screen and (min-width: 480px) {	
+	.title{
+		font-size: 2.5rem;
+		margin-bottom: 1.2em;
+	}
+	
+	.title--text{
+		width: 100%;
+	}
+
+	.view-button{
+		font-size: 1.5rem;
+	}
+
+	.Subtitle{
+		top: 5em;
+		/* text-align: center; */
+		margin: 0;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 8.2em;
+		/* border: 2px yellow dotted; */
+	}
+
+	.menu{
+		height: 3.5em;
+	}
+
+	.nav-list li a{
+		font-size: 1.2rem;
+		margin: 0;
+	}
+
+	.projects{
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.Project{
+		flex-direction:initial;
+	}
+	
+	.project-image{
+		max-width: 100%;
+	}
+	
+	.project-info{
+		width: auto;
+		padding: 0 2em;
+	}
+	
+	.project-title{
+		font-size: 1.7rem;
+		text-align: start;
+		width: 8em;
+		margin-bottom: 1.3em;
+	}
+	
+	.project-links{
+		flex-direction: column;
+	}
+	
+	.link-container{
+		margin-bottom: 0.8em;
+	}
+	
+	
+	.project-link{
+		font-size: 1.1rem;
+	}
+	
+
+
+	.contact-container{
+		/* max-width: 100%; */
+		/* width: 80%; */
+		/* background-color: red; */
+		margin-bottom: 5.2em;
+	}
+
+	.text{
+		font-size: 1.2rem;
+	}
+
+	.contact-text{
+		width: 100%;
+		text-align: center;
+	}
+
+	.form{
+		/* width: 80%; */
+	}
+
+
+	.contact-input{
+		font-size: 1.2rem;
+	}
+
+	.contact-button{
+		font-size: 1.2rem;
+	}
+
+	.contact-icon{
+		margin: 0 0.7em;
+	}
+}
+
+
+
+
+/* Estilo de desktop */
+@media screen and (min-width: 800px) {
+
+	.title{
+		font-size: 3rem;
+		/* margin-bottom: 1.2em; */
+	}
+
+
+	.view-button{
+		font-size: 1.7rem;
+	}
+	
+	.Subtitle{
+		top: 6em;
+		margin-bottom: 10.2em;
+	}
+
+	.nav-list{
+		max-width: 50em;
+	}
+
+	.projects{
+		/* padding: 0 10em; */
+		width: 55%;
+		/* border: 2px dotted white; */
+		padding: 0;
+	}
+
+	.Project{
+		max-width: 100%;
+		/* border: 2px lime dotted; */
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.project-info{
+		/* border: 2px dotted red; */
+		width: 17.5em;
+	}
+
+	.project-image{
+		width: calc(100% - 17.5em);
+		/* min-width: 100%; */
+	}
+
+	.contact-icon{
+		margin: 0 0.8em;
+	}
 }

@@ -237,7 +237,7 @@ function CanvasConnected(props) {
 		};
 	};
 	
-	  window.onload = function() {
+	window.onload = function() {
 		canvasDots();
 	};
 

@@ -1,5 +1,5 @@
 import './App.css';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Canvas from './components/Canvas';
 import CanvasDots from './components/CanvasDots';
 import CanvasConnected from './components/CanvasConnected';
@@ -9,15 +9,19 @@ import Subtitle from './components/Subtitle';
 
 
 import { useForm, ValidationError } from '@formspree/react';		/////////////////////////////
+import { useInView } from "react-intersection-observer";			//////////////////////
 
 
+
+// _____Dependencia formspree:_____ 
+// Nos permite utilizar la API de la web formspree para recibir mails
 
 function ContactForm() {
 	const [state, handleSubmit] = useForm("moqredvl");
 	if (state.succeeded) {
 		return(
-			<div className='message-sent'>
-				<p className='constact-text'>Your message has been successfully sent. Thanks!</p>
+			<div className='contact-container message-sent'>
+				<p className='text contact-text'>Your message has been successfully sent. Thanks!</p>
 				<svg className='menssage-sent-icon' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="96" height="96" viewBox="0 0 226 226" style={{fill: '#000000'}}>
 					<defs>{/* <linearGradient x1="178.54353" y1="145.42041" x2="178.54353" y2="160.63303" gradientUnits="userSpaceOnUse" id="color-1_bOBxRlSTr76T_gr1"><stop offset="0" stopColor="#b5d7f6"></stop><stop offset="1" stopColor="#ffbdc1"></stop></linearGradient> */}<linearGradient x1="113" y1="33.13372" x2="113" y2="189.09491" gradientUnits="userSpaceOnUse" id="color-2_bOBxRlSTr76T_gr2"><stop offset="0" stopColor="#51a2e9"></stop><stop offset="1" stopColor="#ff4d58"></stop></linearGradient><linearGradient x1="167.94978" y1="33.13372" x2="167.94978" y2="189.09491" gradientUnits="userSpaceOnUse" id="color-3_bOBxRlSTr76T_gr3"><stop offset="0" stopColor="#51a2e9"></stop><stop offset="1" stopColor="#ff4d58"></stop></linearGradient>{/* <linearGradient x1="112.71397" y1="74.00441" x2="112.71397" y2="112.20194" gradientUnits="userSpaceOnUse" id="color-4_bOBxRlSTr76T_gr4"><stop offset="0" stopColor="#b5d7f6"></stop><stop offset="1" stopColor="#ffbdc1"></stop></linearGradient> */}</defs>
 					<g transform="">
@@ -37,130 +41,81 @@ function ContactForm() {
 	}
 
 	return (
-		<form className='form' onSubmit={handleSubmit}>
+		<div className='text contact-container'>
 			{/* <label htmlFor="email">Email Address</label> */}
-			<p className='contact-text'>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
-			<input className='contact-input' placeholder="Email" required id="email" type="email" name="email"/>
-			<ValidationError prefix="Email" field="email" errors={state.errors}/>
-			<textarea className='contact-input contact-textarea' placeholder="Message" required id="message" name="message"/>
-			<ValidationError prefix="Message" field="message" errors={state.errors}/>
-			<div className='contact-button-container'>
-				<button className='contact-button' type="submit" disabled={state.submitting}>Submit</button>
-				<div className='contact-button-underline'></div>
-			</div>
-	 	</form>
+			{/* <p className='contact-text'>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p> */}
+			<p className='contact-text' >Have a question or want to work together?</p>
+			<p className='contact-text contact-text-margin'>Leave your details and I'll get back to you as soon as possible.</p>
+			<form className='form' onSubmit={handleSubmit}>
+				<input className='contact-input' placeholder="Email" required id="email" type="email" name="email"/>
+				<ValidationError prefix="Email" field="email" errors={state.errors}/>
+				<textarea className='contact-input contact-textarea' placeholder="Message" required id="message" name="message"/>
+				<ValidationError prefix="Message" field="message" errors={state.errors}/>
+				<div className='contact-button-container'>
+					<button className='contact-button' type="submit" disabled={state.submitting}>Submit</button>
+					<div className='contact-button-underline'></div>
+				</div>
+			</form>
+		</div>
 	);
   }
 
 
 function App() {
 
+	// _____Intersection Observer:_____
+	const [section1Ref, section1InView] = useInView({ threshold: 0.5 });			// "section1Ref" va ubicada en el componente elegido para observar. 	// "section1InView" guarda un true o un false como posibles valores dependiendo de que si el comoponente elejido esta siendo observado.  // "threshold" nos dice cuanta cantidad de ese componente tenemos que estar viendo en pantalla para que califique como observado. Un valor de 0.5 significa que tiene que estar al menos un 50% de se elemento en pantalla para calificar como observado 
+	const [activeMenu, setActiveMenu] = useState(true);
 
+	const [section2Ref, section2InView] = useInView({ threshold: 0.4 });
+	const [activeSkills, setActiveSkills] = useState(false);
 
-	// const [items, setItems] = useState({
-	// 	home: "",
-	// 	skills: "",
-	// 	projects: "",
-	// 	contact: ""
-	// });
+	const [section3Ref, section3InView] = useInView({ threshold: 0.15 });
+	const [activeProjects, setActiveProjects] = useState(false);
 
-	
-	// const boxes = document.querySelectorAll('.observer')			// Esto ya lo vimos en el apunte 17-seleccionar-elementos-del-dom.      // Para refrezcar:   document.querySelectorAll(.selectorCSS)   Nos permite acceder a todos los elementos que coincidan con el nombre del selecctor CSS. Devuelve un nodeList. Recordar que como todo elemento CSS, su nombre debe llevar un punto "." al principio, de lo contrario no funcionara		
+	const [section4Ref, section4InView] = useInView({ threshold: 0.5 });
+	const [activeContact, setActiveContact] = useState(false);
 
-	// const callback = (entries) => {									// Este es el "callback" que usaremos como primer parametro para el constructor "IntersectionObserver" que esta más abajo.  Este callback recibe como parametro los elementos que tiene que vigilar, en este caso van a ser cada una de las cajas, por convención recibe el nombre de "entries"
-	// 	console.log(entries)										// Esto nos vas a devolver un array con mucha información. Ya que cada caja va a ser un objeto guardado como un valor del array. Lo importante aquí entre toda es informcaión es la key "isIntersecting", ya que ella nos dice si la caja es "visible o no" por medio de los valores true o false  
-	// 	entries.forEach(entry => {									// Esto lo vimos en el apunto "14. Arrays - Métodos II". Básicamente ejecuta la función una vez por cada elemento del array, funciona como un "bucle for".  // Recordar que "boxes" es un array de cajas.   
-	// 		if(entry.isIntersecting){								// Estamos preguntando si estamos iterceptando ese elemento. Osea, si lo estamos viendo
-	// 			console.log(`${entry.target.id} Esta siendo visto`)
-	// 			if (entry.target.id === "home") {
-	// 				setItems({home: "red", skills: "", projects: "",contact: ""})
-	// 			} else (
-	// 				setItems({home: "", skills: "", projects: "",contact: ""})
-	// 			)
-				
-	// 			if (entry.target.id === "skills") {
-	// 				setItems({home: "", skills: "red", projects: "",contact: ""})
-	// 			} else (
-	// 				setItems({home: "", skills: "", projects: "",contact: ""})
-	// 			)
-	// 			if (entry.target.id === "projects") {
-	// 				setItems({home: "", skills: "", projects: "red",contact: ""})
-	// 			} else (
-	// 				setItems({home: "", skills: "", projects: "",contact: ""})
-	// 			)
-	// 			if (entry.target.id === "contact") {
-	// 				setItems({home: "", skills: "", projects: "",contact: "red"})
-	// 			} else (
-	// 				setItems({home: "", skills: "", projects: "",contact: ""})
-	// 			)
-				
-	// 			console.log(items)
-	// 		}
-	// 	})
-	// }
+	useEffect(() => {
+		if (section1InView) {
+			setActiveMenu(true)
+		} else{
+			setActiveMenu(false)
+		}
+		
+		if (section2InView) {
+			setActiveMenu(false)
+			setActiveSkills(true)
+		} else{
+			setActiveSkills(false)
+		}
+		
+		if (section3InView) {
+			setActiveMenu(false)
+			setActiveSkills(false)
+			setActiveProjects(true)
+		} else{
+			setActiveProjects(false)
+		}
 
-	// const options = {												// Este objeto lo usaremos como segundo parametro para para el constructor "IntersectionObserver" que esta más abajo. 
-	// 	// root:									    			// Es el elemento padre que vamos a estar vigilando. Lo normal (y por defecto) es que estemos vigilando el "viewport" (pantalla de nuestro navegador). Pero también se puede eleguir otro elemento si así lo deseamos  
-	// 	//rootMargin: "200px"										// Funciona igual que el "margin:" en CSS y le podemos pasar de 1 a 4 parametros (al igual que el margin de CSS). En este caso que tenemos como valor 200px, siginifica que estamos escuchando todo lo que esta en el "viewport" (pantalla del navegador) más 200px extras que no se ven. Por ende estamos interceptando a los elemento 200px antes 
-	// 	// threshold: 0.25                                           // Esto recibe valores entre 0 y 1, donde 0 es el valor por defecto. Este caso tengo un "0.25", eso significa que interceptaremos la caja cuando la veamos un 25% de esta caja.  // Si pueramos como valor "1" significaria que no estamos interceptando la caja hasta que se vea la caja por completo
-	// }
+		if (section4InView) {
+			setActiveMenu(false)
+			setActiveSkills(false)
+			setActiveProjects(false)
+			setActiveContact(true)
+		} else{
+			setActiveContact(false)
+		}
 
-	// const observer = new IntersectionObserver(callback, options)	// Estamos creando nuestro "Intersection Observer". Este constructor que recibe dos parametros. El primero es la funcion que se va a ejecurar cuando entre en nuestro rango de visión. Osea, que es lo que queremos que haga. En este caso pusimos "callback" porque es un calbacka  la espera que se ejecute algo. Este callback hay que crearlo con antelación; El segundo paramentro es opcional y en este caso lleva el nombre de "options", es un objeto que lleva dentro 3 propiedades que son opcionales. Este parametro debe ser creado con anterioridad  
-	// boxes.forEach(element => observer.observe(element))				// Para que el "console.log(entries) de arriba se ejecute, necesitamos de esta linea de codigo. Esto lo vimos en el apunto "14. Arrays - Métodos II". Básicamente ejecuta la función una vez por cada elemento del array, funciona como un "bucle for".  // Recordar que "boxes" es un array de cajas.   // .observe() es un metodo que sirve para observar   // Con esto le decimos al navegador que "observe" a todas las cajas 
-																	
-
-
-
-
-
-	const section = document.querySelectorAll('section');
-	const nav = document.querySelector('nav');
-	const navList = document.querySelectorAll('.nav-list li')
-
-	const options = {
-		thereshold: '0.2'												// Significa que interceptaremos la caja cuando la veamos un 60% de esta 
-	}
-
-	const observer = new IntersectionObserver(entries => {
-		entries.forEach(e => {
-			if (e.isIntersecting) {
-				// // changing navbar style on scroll to next section
-				// if (e.target.id !== "skills") {
-				// 	nav.classList.add('active')
-				// }
-				// else {
-				// 	nav.classList.remove('active')
-				// }
-				// section indicator
-				navList.forEach(link => {
-					// To remove active class from other
-					link.classList.remove('active');
-
-					if (e.target.id === link.dataset.nav) {
-						link.classList.add('active');
-					}
-				})
-			}
-
-		});
-	}, options);
-
-
-
-	section.forEach(section => {
-		observer.observe(section);
-	})
-
-
-
+	}, [section1InView, section2InView, section3InView, section4InView]);
 
 	return (
 		<div className="App">
 
 			<CanvasConnected/>
-			<header id='home' className='header'>
+			<header id='home' className='header' ref={section1Ref}>
 				<h1 className='title'>
-					<p className='title--text animation-right'>Hello, I'm <span className='text-red'>Nico</span>.</p>
+					<p className='title--text animation-right'>Hello, I'm <span className='text-red'>Nicolás Lynch</span>.</p>
 					<p className='title--text animation-left'>I'm a Front-end web developer.</p>
 				</h1>
 				<a href="#skills" className='view-button animation-top'>
@@ -168,32 +123,22 @@ function App() {
 					<span className="material-icons-outlined icon-arrow">arrow_downward</span>
 				</a>
 			</header>
-			{/* <nav className="menu">
-				<ul className='items-list'>
-					<li><a href="#home" className='item'>Home</a></li>
-					<li><a href="#skills" className='item'>Skills</a></li>
-					<li><a href="#projects" className='item'>Projects</a></li>
-					<li><a href="#contact" className='item'>Contact</a></li>
-				</ul>
-			</nav> */}
-
 			<nav className='menu'>
 				<ul className='nav-list'>
-					<li data-nav='home'><a href="#home">Home</a></li>
-					<li data-nav='skills'><a href="#skills">Skills</a></li>
-					<li data-nav='projects'><a href="#projects">Projects</a></li>
-					<li data-nav='contact'><a href="#contact">Contact</a></li>
+					<li className={activeMenu ? "active" : ""}><a href="#home">Home</a></li>
+					<li className={activeSkills ? "active" : ""}><a href="#skills">Skills</a></li>
+					<li className={activeProjects ? "active" : ""}><a href="#projects">Projects</a></li>
+					<li className={activeContact ? "active" : ""}><a href="#contact">Contact</a></li>
 				</ul>
 			</nav>
-
 			<main>
-				<section id='skills' className='skills'>
+				<section id='skills' className='skills' ref={section2Ref}>
 					<Subtitle subtitle='Skills'/>
 					<SkillsList/>
 				</section>
-				<section id='projects' className='projects'>
+				<section id='projects' className='projects' ref={section3Ref}>
 					<Subtitle subtitle='Projects'/>
-					<p className='description'>Most of these projects are challenges that consist of recreating fully functional web pages, taking some images as a reference.</p>
+					<p className='text description'>Most of these projects are challenges that consist of recreating fully functional web pages, taking some images as a reference.</p>
 					<Project projectName='Todo App' 
 							projectDescription=''
 							srcMovil='./assets/images/todo-movil.jpg' 
@@ -209,6 +154,14 @@ function App() {
 							repoLink='https://github.com/Cosmfulanito/clima' 
 							liveLink='https://cosmfulanito.github.io/clima/'
 							referenceLink='https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv'
+					/>
+					<Project projectName='Slideshow gallery' 
+							projectDescription=''
+							srcMovil='./assets/images/gallery-movil.jpg' 
+							srcDesktop='./assets/images/gallery-desktop.jpg' 
+							repoLink='https://github.com/Cosmfulanito/gallery' 
+							liveLink='https://cosmfulanito.github.io/gallery/'
+							referenceLink='https://www.frontendmentor.io/challenges/galleria-slideshow-site-tEA4pwsa6'
 					/>
 					<Project projectName='Pomodoro App' 
 							projectDescription=''
@@ -226,21 +179,11 @@ function App() {
 							liveLink='https://cosmfulanito.github.io/calculadora/'
 							referenceLink='https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29'
 					/> */}
-					<Project projectName='Slideshow gallery' 
-							projectDescription=''
-							srcMovil='./assets/images/gallery-movil.jpg' 
-							srcDesktop='./assets/images/gallery-desktop.jpg' 
-							repoLink='https://github.com/Cosmfulanito/gallery' 
-							liveLink='https://cosmfulanito.github.io/gallery/'
-							referenceLink='https://www.frontendmentor.io/challenges/galleria-slideshow-site-tEA4pwsa6'
-					/>
 				</section>
-				<section id='contact' className='contact'>
+				<section id='contact' className='contact' ref={section4Ref}>
 					<Subtitle subtitle='Contact'/>
 					{/* <p>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p> */}
-					<div className='contact-container'>
-						<ContactForm/>
-					</div>
+					<ContactForm/>
 					<div className='contact-links'>
 						<a  href='https://github.com/Cosmfulanito' target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-github contact-icon"></i>
