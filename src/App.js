@@ -160,7 +160,7 @@ function App() {
 							srcMovil='./assets/images/gallery-movil.jpg' 
 							srcDesktop='./assets/images/gallery-desktop.jpg' 
 							repoLink='https://github.com/Cosmfulanito/gallery' 
-							liveLink='https://cosmfulanito.github.io/gallery/'
+							liveLink='https://cosmfulanito.github.io/galeria-version-final/'
 							referenceLink='https://www.frontendmentor.io/challenges/galleria-slideshow-site-tEA4pwsa6'
 					/>
 					<Project projectName='Pomodoro App' 
