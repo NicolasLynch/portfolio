@@ -65,6 +65,13 @@ body{
 	margin: 0em;
 }
 
+.title--text-up{
+	width: 8em;
+	padding-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .animation-right{
 	animation-duration: 1.5s;
 	animation-name: to-right;

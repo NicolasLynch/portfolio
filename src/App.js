@@ -115,7 +115,7 @@ function App() {
 			<CanvasConnected/>
 			<header id='home' className='header' ref={section1Ref}>
 				<h1 className='title'>
-					<p className='title--text animation-right'>Hello, I'm <span className='text-red'>Nicolás Lynch</span>.</p>
+					<p className='title--text title--text-up animation-right'>Hello, I'm <span className='text-red'>Nicolás Lynch</span>.</p>
 					<p className='title--text animation-left'>I'm a Front-end web developer.</p>
 				</h1>
 				<a href="#skills" className='view-button animation-top'>
