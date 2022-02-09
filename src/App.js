@@ -143,46 +143,45 @@ function App() {
 							projectDescription=''
 							srcMovil='./assets/images/todo-movil.jpg' 
 							srcDesktop='./assets/images/todo-desktop.jpg' 
-							repoLink='https://github.com/Cosmfulanito/todo-app' 
-							liveLink='https://cosmfulanito.github.io/todo-app/'
+							repoLink='https://github.com/NicolasLynch/todo-app' 
+							liveLink='https://nicolaslynch.github.io/todo-app/'
 							referenceLink='https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW'
 					/>
 					<Project projectName='Weather App' 
 							projectDescription=''
 							srcMovil='./assets/images/weather-movil.jpg' 
 							srcDesktop='./assets/images/weather-desktop.jpg' 
-							repoLink='https://github.com/Cosmfulanito/clima' 
-							liveLink='https://cosmfulanito.github.io/clima/'
+							repoLink='https://github.com/NicolasLynch/weather-app' 
+							liveLink='https://nicolaslynch.github.io/weather-app/'
 							referenceLink='https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv'
 					/>
 					<Project projectName='Slideshow gallery' 
 							projectDescription=''
 							srcMovil='./assets/images/gallery-movil.jpg' 
 							srcDesktop='./assets/images/gallery-desktop.jpg' 
-							repoLink='https://github.com/Cosmfulanito/gallery' 
-							liveLink='https://cosmfulanito.github.io/galeria-version-final/'
+							repoLink='https://github.com/NicolasLynch/slideshow-gallery' 
+							liveLink='https://nicolaslynch.github.io/slideshow-gallery/'
 							referenceLink='https://www.frontendmentor.io/challenges/galleria-slideshow-site-tEA4pwsa6'
 					/>
 					<Project projectName='Pomodoro App' 
 							projectDescription=''
 							srcMovil='./assets/images/pomodoro-movil.jpg' 
 							srcDesktop='./assets/images/pomodoro-desktop.jpg' 
-							repoLink='https://github.com/Cosmfulanito/pomodoro' 
-							liveLink='https://cosmfulanito.github.io/pomodoro/'
+							repoLink='https://github.com/NicolasLynch/pomodoro-app' 
+							liveLink='https://nicolaslynch.github.io/pomodoro-app/'
 							referenceLink='https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G'
 					/>
 					{/* <Project projectName='Calculator app' 
 							projectDescription=''
 							srcMovil='./assets/images/calculator-movil.jpg' 
 							srcDesktop='./assets/images/calculator-desktop.jpg' 
-							repoLink='https://github.com/Cosmfulanito/calculadora' 
-							liveLink='https://cosmfulanito.github.io/calculadora/'
+							repoLink='https://github.com/NicolasLynch/calculator-app' 
+							liveLink='https://nicolaslynch.github.io/calculator-app/'
 							referenceLink='https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29'
 					/> */}
 				</section>
 				<section id='contact' className='contact' ref={section4Ref}>
 					<Subtitle subtitle='Contact'/>
-					{/* <p>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p> */}
 					<ContactForm/>
 					<div className='contact-links'>
 						<a  href='https://github.com/Cosmfulanito' target="_blank" rel="noopener noreferrer">
