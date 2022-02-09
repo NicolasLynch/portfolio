@@ -1,7 +1,5 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import Canvas from './components/Canvas';
-import CanvasDots from './components/CanvasDots';
 import CanvasConnected from './components/CanvasConnected';
 import SkillsList from './components/SkillsList';
 import Project from './components/Project';
@@ -17,7 +15,7 @@ import { useInView } from "react-intersection-observer";			/////////////////////
 // Nos permite utilizar la API de la web formspree para recibir mails
 
 function ContactForm() {
-	const [state, handleSubmit] = useForm("moqredvl");
+	const [state, handleSubmit] = useForm("mjvlydyq");
 	if (state.succeeded) {
 		return(
 			<div className='contact-container message-sent'>
@@ -184,7 +182,7 @@ function App() {
 					<Subtitle subtitle='Contact'/>
 					<ContactForm/>
 					<div className='contact-links'>
-						<a  href='https://github.com/Cosmfulanito' target="_blank" rel="noopener noreferrer">
+						<a  href='https://github.com/NicolasLynch' target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-github contact-icon"></i>
 						</a>
 						<a  href='https://www.linkedin.com/in/cosme-fulanito-036670208/' target="_blank" rel="noopener noreferrer">
