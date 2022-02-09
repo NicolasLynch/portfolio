@@ -185,7 +185,7 @@ function App() {
 						<a  href='https://github.com/NicolasLynch' target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-github contact-icon"></i>
 						</a>
-						<a  href='https://www.linkedin.com/in/cosme-fulanito-036670208/' target="_blank" rel="noopener noreferrer">
+						<a  href='https://www.linkedin.com/in/nicolás-lynch-5393ba231/' target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-linkedin contact-icon"></i>					
 						</a>
 					</div>
