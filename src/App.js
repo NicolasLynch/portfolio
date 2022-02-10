@@ -5,15 +5,12 @@ import SkillsList from './components/SkillsList';
 import Project from './components/Project';
 import Subtitle from './components/Subtitle';
 
-
-import { useForm, ValidationError } from '@formspree/react';		/////////////////////////////
-import { useInView } from "react-intersection-observer";			//////////////////////
-
+import { useForm, ValidationError } from '@formspree/react';		
+import { useInView } from "react-intersection-observer";			
 
 
 // _____Dependencia formspree:_____ 
 // Nos permite utilizar la API de la web formspree para recibir mails
-
 function ContactForm() {
 	const [state, handleSubmit] = useForm("mjvlydyq");
 	if (state.succeeded) {
