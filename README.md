@@ -28,5 +28,6 @@ Original code:
 Recommended change:
 > const [state, handleSubmit] = useForm(Your key);
 
-Once finished, the messages will arrive in your own email box.
+
+Once these steps are complete, the messages will arrive in your own email box.
 
