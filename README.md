@@ -1,4 +1,4 @@
-# portfolioo
+# portfolio
 
 My personal portfolio. Take a look at my work.
 
